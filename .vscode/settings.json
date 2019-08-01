@@ -1,0 +1,13 @@
+{
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#21320C",
+        "titleBar.activeBackground": "#2F4611",
+        "titleBar.activeForeground": "#F6FBF0"
+    },
+    "cSpell.ignoreWords": [
+        "kaur",
+        "sendgrid",
+        "twilio"
+    ],
+    "git.ignoreLimitWarning": true
+}
