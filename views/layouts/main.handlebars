@@ -8,20 +8,12 @@
 </head>
 <body>
     <header>  
-        {{!-- <nav>
-              <ul>
-                  <li><a href="/"> Home </a></li>
-                  <li><a href="/user/login"> Login </a></li>
-                  <li><a href="/user/register">Register </a></li>
-                  <li><a href="/room/searchRoom">Search Room</a></li>
-                  <li><a href="/room/bookRoom">Book Room</a></li>
-              </ul>
-        </nav> --}}
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark nav-color">
             <a class="navbar-brand" href="/">AirBnb</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -34,6 +26,9 @@
                  <li class="nav-item">
                     <a class="nav-link" href="/user/register">Register</a>
                 </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="/room/viewRoom">Rooms</a>
+                </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -43,7 +38,10 @@
             </nav>
     </header>
     {{{body}}}
-    <footer>
+    <footer class="fixed-bottom">
+        <nav class="navbar">
+       <a class="navbar-brand" href="/">AirBnb</a>
+       </nav>
     </footer>
     <script language="javascript" src="js/bootstrap.min.js"></script>
 </body>

@@ -18,12 +18,10 @@ mongoose.connect('mongodb://localhost:27017/airBnb', {useNewUrlParser: true})
     console.log(`The mongo db failed to connect because ${err}`);
 });
 
-
-
-
 //import routes
 const generalRoute = require("./routes/General");
-const userRoute = require("./routes/user");
+const userRoute = require("./routes/user");  
+
 
 //This creates an express object that which initializes our project
 const app = express();
@@ -50,14 +48,11 @@ app.use(express.static('public'))
 
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
-
 //Routes
 
 app.use("/",generalRoute);
 
 app.use("/user",userRoute); //object
-
-
 
 const port=5000;
 app.listen(port,()=>{

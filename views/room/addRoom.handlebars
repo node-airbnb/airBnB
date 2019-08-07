@@ -1,0 +1,21 @@
+{{#each errors}}
+ <div class="error">  {{this}} </div>
+{{/each}}
+
+<form method="POST" action="/room/addRoom">
+
+  <label> Title </label>
+  <input type="text" id="title" name="title" value="{{title}}"> <br><br>
+
+  <div class="custom-file">
+  <input type="file" class="custom-file-input" id="customFile">
+  <label class="custom-file-label" for="customFile">Choose file</label>
+ </div>
+
+  <label> Description </label>
+   <textarea id="description" name="description">{{description}}</textarea> <br><br>
+
+
+  <input type="submit" value="Add Task">
+
+</form>

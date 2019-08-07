@@ -1,10 +1,50 @@
-.banner {
-    background-color: #F20F38;
+ .background {
+    margin: 0;
+    padding: 0; 
+    width: 100%;
+    background-size: cover;
+    background-image: url("../img/hero.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+} 
+
+.nav-color {
+    background-color:#F20F38;
+    color: white;
 }
 
-.format {
+
+.form-container {
+    margin: 4em 0;
     padding: 2em;
-    margin: 2em;
-    background-color: #F20F38;
+    background-color: lightblue;
+    box-shadow: 0px 0px 10px 0px #000;
 }
 
+.align {
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+.alignment {
+    text-align: center;
+}
+
+.banner {
+width: 100%;
+background-size: cover;
+background-image: url("../img/hero.jpg");
+height: 500px; /* You must set a specified height */
+background-position: center; /* Center the image */
+background-repeat: no-repeat;
+}
+
+.room-container {
+  margin-bottom: 6em;  
+}
+
+footer {
+    background-color: #333; 
+    margin-top: 4em;
+}
