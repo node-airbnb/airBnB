@@ -190,7 +190,8 @@ router.post("/login",(req,res)=>
                //if isMatched has a true value, that means that the user's password was matched with the has one stored in the db
                if(isMatched==true)
                {
-                  // req.session.userInfo = user;
+                  req.session.userInfo = user;
+                  console.log(req.session.userInfo)
                   console.log("User is logged in")
                   res.redirect("/room/viewRoom")
                }
@@ -219,8 +220,8 @@ router.post("/login",(req,res)=>
             {
             errors.push("Sorry username does not exists in db");
 
-            res.render("User/login",{
-            errors:errors
+            res.render("user/login",{
+               errors:errors
       
             });
 
@@ -235,5 +236,12 @@ router.post("/login",(req,res)=>
    }
 
 });
+router.get("/logout",(req,res)=>
+{
 
+  //This kills the session
+   req.session.destroy();
+   res.redirect("/user/login");
+
+})
 module.exports=router;

@@ -5,6 +5,7 @@ const exphbs  = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override')
+const session = require('express-session');
 
 
 //This line connects mongoose to our mongoDB database
@@ -36,6 +37,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
+// Use the session middleware
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 60000 }}))
 
 //This forces express to set handlebars as it's template engine
 app.engine('handlebars', exphbs());
@@ -48,6 +51,17 @@ app.use(express.static('public'))
 // app.use("/styles/css", express.static(path.join(__dirname, "node_modules/bootstrap/dist/css")));
 
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+
+app.use((req,res,next)=>
+{
+    res.locals.userInfo= req.session.userInfo;
+
+    next();
+
+
+});
+
+
 
 //Routes
 
