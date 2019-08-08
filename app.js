@@ -21,6 +21,7 @@ mongoose.connect('mongodb://localhost:27017/airBnb', {useNewUrlParser: true})
 //import routes
 const generalRoute = require("./routes/General");
 const userRoute = require("./routes/user");  
+const roomRoute = require("./routes/room");
 
 
 //This creates an express object that which initializes our project
@@ -51,8 +52,8 @@ app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 //Routes
 
 app.use("/",generalRoute);
-
 app.use("/user",userRoute); //object
+app.use("/room",roomRoute);
 
 const port=5000;
 app.listen(port,()=>{

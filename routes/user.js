@@ -2,16 +2,14 @@ const express= require("express");
 const userSchema = require("../models/user");
 const mongoose = require("mongoose");
 const router= express.Router();
+const bcrypt = require('bcryptjs');
 
+//This creates a model in our application called user. A model is a representation of a collection
+const User = mongoose.model('Users', userSchema);
 
 router.get("/login",(req,res)=>
 {
    res.render("user/login");
-});
-
-router.post("/login",(req,res)=>
-{
-  
 });
 
 router.get("/register",(req,res)=>
@@ -25,11 +23,6 @@ router.post("/register",(req,res)=>
   
   //validate
 
-  if(req.body.email==="")
-  {
-     errors.push("You must enter an email address");
-  }
-
   if(req.body.firstName==="")
   {
      errors.push("You must enter a first name");
@@ -40,9 +33,9 @@ router.post("/register",(req,res)=>
      errors.push("You must enter a last name");
   }
 
-  if(req.body.username==="")
+  if(req.body.email==="")
   {
-     errors.push("You must enter a username");
+     errors.push("You must enter a Email");
   }
 
   if(req.body.password==="")
@@ -68,82 +61,178 @@ router.post("/register",(req,res)=>
   {
       res.render("User/register",{
          errors:errors,
-         email: req.body.email,
          firstName: req.body.firstName,
          lastName : req.body.lastName,
-         username : req.body.username
+         email : req.body.email
        });
   }
 
   //The else represents NO ERROS OCCURED THUS, ENTER DATA IN DATABASE
   else
   {
-     //This creates a model in our application called user. A model is a representation of a collection
-     const User = mongoose.model('Users', userSchema);
 
-
-    //object literal must match schema
-     const userData=
-     {   
-        email: req.body.email, 
-        firstName : req.body.firstName,
-        lastName: req.body.lastName,
-        username: req.body.username,
-        password: req.body.password,
-     }
+//object literal must match schema
+   const userData=
+   {
+      firstName : req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email, 
+      password: req.body.password,
+   }
    
-     //put document into collection
-     new User(userData)
-     .save()
-     .then( ()=>
-     {
-      const accountSid = 'AC9e1b0f31f8f9ee244227a6f86ff1368e';
-      const authToken = 'd2c21a84b6cd77cf2f332f8065af9533';
-      const client = require('twilio')(accountSid, authToken);
+   
+   //The genSalt function is used to generate random Text that will then be added to your password. Then that new, edited password will be hash
+   bcrypt.genSalt(10, function(err, salt) 
+   {
+      bcrypt.hash(userData.password, salt, function(err, hash) 
+      {
       
-      client.messages
-        .create({
-           body: `Welcome ${req.body.firstName} You have now been registered with AirBnb`,
-           from: '+16479579767',
-           to: '+16472120075'
-         })
-        .then(message => console.log(message.sid));
+         userData.password= hash;
 
-         const nodemailer = require('nodemailer');
-         const sgTransport = require('nodemailer-sendgrid-transport');
-         const options = {
-         auth: {
-             api_user: 'KaurWeb',
-             api_key: 'India@2019'
-         }
-     }
+         //put document into collection
+      new User(userData)
+      .save()
+      .then( ()=>
+      {
+   //       const accountSid = 'AC9e1b0f31f8f9ee244227a6f86ff1368e';
+   //       const authToken = 'd2c21a84b6cd77cf2f332f8065af9533';
+   //       const client = require('twilio')(accountSid, authToken);
+         
+   //       client.messages
+   //         .create({
+   //            body: `Welcome ${req.body.firstName} You have now been registered with AirBnb`,
+   //            from: '+16479579767',
+   //            to: '+16472120075'
+   //          })
+   //         .then(message => console.log(message.sid));
 
-     const mailer = nodemailer.createTransport(sgTransport(options));
+   //          const nodemailer = require('nodemailer');
+   //          const sgTransport = require('nodemailer-sendgrid-transport');
+   //          const options = {
+   //          auth: {
+   //              api_user: 'KaurWeb',
+   //              api_key: 'India@2019'
+   //          }
+   //      }
 
-     const email = {
-      to: `${req.body.email}`, 
-      from: 'Sukhdesigns21@gmail.com',
-      subject: 'Registration is successful',
-      text: 'Registration Done',
-      html: `Hey ${req.body.firstName} You have been successfully registered with AirBnb`
-  };
-   
-  mailer.sendMail(email, function(err, res) {
-      if (err) { 
-          console.log(err) 
-      }
-      console.log(res);
-  });
+   //      const mailer = nodemailer.createTransport(sgTransport(options));
+
+   //      const email = {
+   //       to: `${req.body.email}`, 
+   //       from: 'Sukhdesigns21@gmail.com',
+   //       subject: 'Registration is successful',
+   //       text: 'Registration Done',
+   //       html: `Hey ${req.body.firstName} You have been successfully registered with AirBnb`
+   //   };
+      
+   //   mailer.sendMail(email, function(err, res) {
+   //       if (err) { 
+   //           console.log(err) 
+   //       }
+   //       console.log(res);
+   //   });
 
 
-       res.redirect("/user/login");
-     })
-     .catch( (err)=>
-     {
-       console.log(`Error ${err}`);
-     })
+   res.redirect("/user/login");
+   })
+   .catch( (err)=>
+   {
+      console.log(`Error ${err}`);
+   })
+
+
+      });
+   });
+
 
 }
+
+});
+
+
+router.post("/login",(req,res)=>
+{
+   const errors= [];
+
+   //validate
+
+   if(req.body.email==="")
+   {
+   errors.push("You must enter a email");
+   }
+
+   if(req.body.password==="")
+   {
+   errors.push("You must enter a password");
+   }
+
+   //THE IF MEANS THAT AN ERROR(S) OCCURED, THUS SHOW ERORS
+   if(errors.length > 0)
+   {
+
+      res.render("user/login",{
+      errors:errors,
+      email: req.body.email
+      });
+   }
+   else
+   {
+         User.findOne({email:req.body.email})
+         .then(user=>{
+
+            //user!=null, means that an actual user object was returned 
+            if(user!=null)
+            {
+               // Load hash from your password DB.
+               bcrypt.compare(req.body.password, user.password, function(err, isMatched) {
+               // res === true
+
+               //if isMatched has a true value, that means that the user's password was matched with the has one stored in the db
+               if(isMatched==true)
+               {
+                  // req.session.userInfo = user;
+                  console.log("User is logged in")
+                  res.redirect("/room/viewRoom")
+               }
+
+               //This means that the user did not enter the correct password,thus , we need to display an error message and render the home view
+               else
+
+               {
+
+                  errors.push("You entered the incorrect password");
+                  res.render("user/login",{
+                  errors:errors,
+                  email: req.body.email
+                  });
+               }
+
+
+            });
+
+
+
+            }
+
+            //The else represents that the username was not found in the db
+            else
+            {
+            errors.push("Sorry username does not exists in db");
+
+            res.render("User/login",{
+            errors:errors
+      
+            });
+
+            console.log("no user name")
+            
+
+
+            }
+
+         })
+
+   }
 
 });
 
