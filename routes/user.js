@@ -193,7 +193,7 @@ router.post("/login",(req,res)=>
                   req.session.userInfo = user;
                   console.log(req.session.userInfo)
                   console.log("User is logged in")
-                  res.redirect("/room/viewRoom")
+                  res.redirect("/room/viewrooms")
                }
 
                //This means that the user did not enter the correct password,thus , we need to display an error message and render the home view

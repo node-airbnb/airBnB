@@ -1,3 +1,21 @@
 <h1>Welcome {{userInfo.firstName}}  {{userInfo.lastName}}</h1>
 
-<h1>Here are some available rooms for you.</h1>
+<h5>Here are some available rooms for you.</h5>
+
+{{#each allRoom}}
+<div class="error">Title:  {{this.title}} </div>
+<div class="error">Address:  {{this.address}} </div>
+<div class="error">Description:  {{this.description}} </div>
+<div class="error">Image:  {{this.image}} </div>
+
+<br/>
+
+<a href="/task/edit/{{this._id}}"> Edit </a> &nbsp;&nbsp;
+
+
+<form method="POST" action="/task/delete/{{this._id}}?_method=DELETE">
+    <button type="submit">Delete </button>
+</form>
+<br/>
+<br/>
+{{/each}}

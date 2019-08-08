@@ -1,21 +1,27 @@
 {{#each errors}}
- <div class="error">  {{this}} </div>
+<div class="error">  {{this}} </div>
 {{/each}}
 
 <form method="POST" action="/room/addRoom">
 
   <label> Title </label>
   <input type="text" id="title" name="title" value="{{title}}"> <br><br>
-
-  <div class="custom-file">
-  <input type="file" class="custom-file-input" id="customFile">
-  <label class="custom-file-label" for="customFile">Choose file</label>
- </div>
+  
+  <label> Address </label>
+  <input type="text" id="address" name="address" value="{{address}}"> <br><br>
 
   <label> Description </label>
-   <textarea id="description" name="description">{{description}}</textarea> <br><br>
+  <textarea id="description" name="description">{{description}}</textarea> <br><br>
+  
 
+    <label> Room Image </label>
+  <input type="text" id="image" name="image" value="{{image}}"> <br><br>
 
-  <input type="submit" value="Add Task">
+  {{!-- <div class="custom-file">
+  <input type="file" class="custom-file-input" id="customFile">
+  <label class="custom-file-label" for="customFile">Choose file</label>
+</div> --}}
+
+  <input type="submit" value="Add Room">
 
 </form>
