@@ -147,16 +147,14 @@ router.put("/edit/:id",(req,res)=>
 });
 
 
-// router.delete("/delete/:id",(req,res)=>{
+router.delete("/delete/:id",(req,res)=>{
 
-//       Task.remove({_id:req.params.id})
-//       .then(()=>{
+      Room.remove({_id:req.params.id})
+      .then(()=>{
+      res.redirect("/room/viewrooms");
+      });
 
-//         res.redirect("/task/tasks");
-
-//       });
-
-// })
+})
 
 
 
