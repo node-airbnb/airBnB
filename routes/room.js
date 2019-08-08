@@ -116,40 +116,35 @@ router.get("/viewrooms",(req,res)=>
 });
 
 
-// //This navigates the user to the Task Edit form with populated data
-// router.get("/edit/:id",hasAccess,(req,res)=>
-// { 
+//This navigates the user to the Task Edit form with populated data
+router.get("/edit/:id",(req,res)=>
+{ 
+   Room.findOne({ _id:req.params.id})
+   .then((room)=>
+   {
+      res.render("room/editRoom",{
+         room:room
+      })
+   })
+});
 
-//    Task.findOne({ _id:req.params.id})
-//    .then((task)=>
-//    {
-//         res.render("Task/editForm",{
-//           task:task
-//         })
-//    })
-// });
+router.put("/edit/:id",(req,res)=>
+{ 
 
-// router.put("/edit/:id",(req,res)=>
-// { 
+      Room.findOne({_id:req.params.id})
+      .then(task=>
+      {
+         task.title=req.body.title;
+         task.address=req.body.address;
+         task.description = req.body.description;
+         task.image=req.body.image;
 
-//       Task.findOne({_id:req.params.id})
-//       .then(task=>
-//       {
-         
-//          task.title=req.body.title;
-
-//          task.description=req.body.description
-
-//          task.save()
-//          .then(task=>{
-
-//             res.redirect("/task/tasks");
-//          })
-
-
-//       })
-   
-// });
+         task.save()
+         .then(room=>{
+            res.redirect("/room/viewrooms");
+         })
+      })
+});
 
 
 // router.delete("/delete/:id",(req,res)=>{

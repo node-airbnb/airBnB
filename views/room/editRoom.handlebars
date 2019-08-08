@@ -1,27 +1,27 @@
-{{#each errors}}
+{{!-- {{#each errors}}
 <div class="error">  {{this}} </div>
-{{/each}}
+{{/each}} --}}
 
-<form method="POST" action="/room/addRoom">
+<form method="POST" action="/room/edit/{{room._id}}?_method=PUT">
 
 <label> Title </label>
-<input type="text" id="title" name="title" value="{{title}}"> <br><br>
+<input type="text" id="title" name="title" value="{{room.title}}"> <br><br>
 
 <label> Address </label>
-<input type="text" id="address" name="address" value="{{address}}"> <br><br>
+<input type="text" id="address" name="address" value="{{room.address}}"> <br><br>
 
 <label> Description </label>
-<textarea id="description" name="description">{{description}}</textarea> <br><br>
+<textarea id="description" name="description">{{room.description}}</textarea> <br><br>
 
 
 <label> Room Image </label>
-<input type="text" id="image" name="image" value="{{image}}"> <br><br>
+<input type="text" id="image" name="image" value="{{room.image}}"> <br><br>
 
 {{!-- <div class="custom-file">
 <input type="file" class="custom-file-input" id="customFile">
 <label class="custom-file-label" for="customFile">Choose file</label>
 </div> --}}
 
-<input type="submit" value="Add Room">
+<input type="submit" value="Update">
 
 </form>
