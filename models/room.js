@@ -16,6 +16,46 @@ const roomSchema = new Schema(
     { 
         type:String,
         required:true 
+        },
+    city: 
+    { 
+        type:String,
+        required:true 
+    },
+    price: 
+    { 
+        type:Number,
+        required:true 
+        },
+    owner: 
+    { 
+        type:String,
+        required:true 
+    },
+    amenities1: 
+    { 
+        type:String,
+        required:true 
+    },
+    amenities2: 
+    { 
+        type:String,
+        required:true 
+    },
+    amenities3: 
+    { 
+        type:String,
+        required:true 
+    },
+    amenities4: 
+    { 
+        type:String,
+        required:true 
+    },
+    amenities5: 
+    { 
+        type:String,
+        required:true 
     },
     description:
     { 

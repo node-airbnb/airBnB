@@ -1,21 +1,63 @@
+{{!-- <form class="form-inline my-2 my-lg-0"> --}}
+    {{!-- <input name="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> --}}
+    {{!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> --}}
+{{!-- </form> --}}
+
 <h1>Welcome {{userInfo.firstName}}  {{userInfo.lastName}}</h1>
+
+
+
 
 <h5>Here are some available rooms for you.</h5>
 
+<input type="text" id="myInput"placeholder="Search for names.." title="Type in a name">
+
+
+
+<div id="myUL">
+
 {{#each allRoom}}
-<div class="error">Title:  {{this.title}} </div>
+    <div class="container room-container">
+        <li class="card-deck">
+        <div class="card">
+            <img src="/img/banner.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">{{this.title}}</h5>
+            <a class="card-text">Location: {{this.city}}</a>
+            </div>
+            <div class="card-footer">
+                <a href="/room/viewroomdetails/{{this._id}}">
+                    <small class="text-muted">View More..</small>
+                </a>
+            </div>
+</div>
+
+{{!-- <div class="error">Title:  {{this.title}} </div>
+<div class="error">address:  {{this.address}} </div>
+<div class="error">price:  {{this.price}} </div>
+<div class="error">owner:  {{this.owner}} </div>
+<div class="error">amenities1:  {{this.amenities1}} </div>
+<div class="error">amenities2:  {{this.amenities2}} </div>
+<div class="error">amenities3:  {{this.amenities3}} </div>
+<div class="error">amenities4:  {{this.amenities4}} </div>
+<div class="error">amenities5:  {{this.amenities5}} </div>
 <div class="error">Address:  {{this.address}} </div>
+<a class="city">city:  {{this.city}} </a>
 <div class="error">Description:  {{this.description}} </div>
 <div class="error">Image:  {{this.image}} </div>
+<img src={{this.image}} alt="Smiley face" height="42" width="42">
 
-<br/>
 
-<a href="/room/edit/{{this._id}}"> Edit </a> &nbsp;&nbsp;
+<br/> --}}
+
+{{!-- <a href="/room/edit/{{this._id}}"> Edit </a> &nbsp;&nbsp;
 
 
 <form method="POST" action="/room/delete/{{this._id}}?_method=DELETE">
     <button type="submit">Delete </button>
-</form>
+</form> --}}
 <br/>
 <br/>
+</div>
 {{/each}}
+</div>

@@ -72,11 +72,19 @@ else
       const roomData=
       {
          title: req.body.title,
+         address1: req.body.address1,
+         city: req.body.city,
+         price: req.body.price,
+         owner: req.body.owner,
+         amenities1: req.body.amenities1,
+         amenities2: req.body.amenities2,
+         amenities3: req.body.amenities3,
+         amenities4: req.body.amenities4,
+         amenities5: req.body.amenities5,
          address: req.body.address,
          description: req.body.description,
          image: req.body.image,
          // roomid: req.session.userInfo._id
-
       }
 
    
@@ -107,14 +115,31 @@ router.get("/viewrooms",(req,res)=>
    Room.find()
    .then((rooms)=>
    {
-      console.log(rooms);
+      // console.log(searchInput);
       res.render("room/viewRoom",{
          allRoom:rooms
+      })
 
+   })
+});
+
+router.get("/viewroomdetails/:id",(req,res)=>
+{
+   Room.findOne({ _id:req.params.id})
+   .then((rm)=>
+   {
+      res.render("room/roomDetails",{
+         rm:rm
       })
    })
 });
 
+//This processes the data after the task form has been submitted
+router.post("/viewSingleRoom",(req,res)=>
+{ 
+
+
+});
 
 //This navigates the user to the Task Edit form with populated data
 router.get("/edit/:id",(req,res)=>

@@ -8,7 +8,7 @@
     "deploy": "gh-pages -d build",
     "start": "node app.js",
     "devStart": "nodemon app.js",
-    "scss": "node-sass scss/main.scss public/css/style.css -w"
+    "scss": "node-sass scss/main.scss public/css/styles.css -w"
   },
   "author": "",
   "license": "ISC",
