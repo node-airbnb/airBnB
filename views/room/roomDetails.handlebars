@@ -14,14 +14,35 @@
 </div>
 <br/> --}}
 
-<div class="container room-container">
+<div class="container room-container roomWrapper">
     <li class="card-deck">
     <div class="card">
         <img src="{{rm.image}}" class="card-img-top" alt="...">
         <div class="card-body">
-        <h5 class="card-title">{{rm.title}}</h5>
-        <a class="card-text">Location: {{rm.city}}</a>
-            <div>{{rm.address}}</div>
+          <div class="card-header text-center"> 
+          <h5 class="card-title room-title">{{rm.title}}</h5>
+          </div>
+          <div class="room-body">
+          <div class="card-text addressWrap">  
+            <a ><strong>Location: </strong> {{rm.city}}</a> <br>
+            <div><strong>Address: </strong> {{rm.address}}</div>
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item"><strong>Price per night: </strong>${{rm.price}}</li>
+            <li class="list-group-item"><strong>Owner: </strong>{{rm.owner}}</li>
+          </ul>
+          <div> 
+           <ul class="amenitiesContainer list-group">    
+            <li class="list-group-item" ><strong>Amenities: </strong></li>
+            <li class="list-group-item">{{rm.amenities1}}</li>
+            <li class="list-group-item">{{rm.amenities2}}</li>
+            <li class="list-group-item">{{rm.amenities3}}</li>
+            <li class="list-group-item">{{rm.amenities4}}</li>
+            <li class="list-group-item">{{rm.amenities5}}</li>
+            </ul>
+          </div>
+          </div>  
+            {{!-- <div>{{rm.address}}</div>
     <div>{{rm.price}}</div>
     <div>{{rm.owner}}</div>
     <div>{{rm.amenities1}}</div>
@@ -30,18 +51,18 @@
     <div>{{rm.amenities4}}</div>
     <div>{{rm.amenities5}}</div>
     <div>{{rm.city}}</div>
-        </div>
-        <div class="card-footer">
+        </div> --}}
+        <div class="card-footer text-center">
             {{#if userInfo}}
             <a href="/room/bookRoom/{{rm._id}}">
-                <small class="text-muted">Book This Room</small>
+              <button type="button" class="btn btn-primary">Book room</button>
             </a>
-            {{else}}
-            <a href="/user/login">
-                <small class="text-muted">Please Login to Book the room.</small>
-            </a>
-            {{/if}}
+            {{else}}   
 
+             <a href="/user/login" >PLEASE LOGIN TO
+               <button type="button" class="btn btn-primary btn-lg">Book room</button>
+             </a>
+            {{/if}}
         </div>
 </div>
 {{!-- {{/each}} --}}
@@ -50,21 +71,7 @@
 
 
 
-{{!-- <div>
-<div class="">Title:  {{rm.title}} </div>
-<div class="">address:  {{rm.address}} </div>
-<div class="">price:  {{rm.price}} </div>
-<div class="">owner:  {{rm.owner}} </div>
-<div class="">amenities1:  {{rm.amenities1}} </div>
-<div class="">amenities2:  {{rm.amenities2}} </div>
-<div class="">amenities3:  {{rm.amenities3}} </div>
-<div class="">amenities4:  {{rm.amenities4}} </div>
-<div class="">amenities5:  {{rm.amenities5}} </div>
-<div class="">Address:  {{rm.address}} </div>
-<a class="city">city:  {{rm.city}} </a>
-<div class="">Description:  {{rm.description}} </div>
-<div class="">Image:  {{rm.image}} </div> --}}
-{{!-- <img src={{rm.image}}/> --}}
+
 
 
 {{!-- <br/> --}}

@@ -1,13 +1,47 @@
-<div>First Name: {{userInfo.firstName}}</div>
-<div>Last Name: {{userInfo.lastName}}</div>
-<div>Email: {{userInfo.email}}</div>
+<div class="card top-header">
+    <div class="card-body title">
+        <h1 class="container">Welcome {{userInfo.firstName}}  {{userInfo.lastName}}</h1>
+        <h5 class="container">This is your profile page </h5>
+    </div>
+</div>    
+
+{{!-- <div class="container">
+    <div>First Name: {{userInfo.firstName}}</div>
+    <div>Last Name: {{userInfo.lastName}}</div>
+    <div>Email: {{userInfo.email}}</div> --}}
 
 
 <br/><br/>
+<div class="container profile-wrapper">
+ <section class="row justify-content-center">
+  <div class="col-12 col-sm-10 col-md-8">
+    <div class="card text-black bg-light mb-3">
+      <div class="card-header text-center profile-title">MY PROFILE</div>
+        <div class="card-body">
+            <div class="text-center">
+              <img src="https://images.unsplash.com/photo-1479936343636-73cdc5aae0c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" alt="..." class="img-thumbnail">
+            </div>
+            <h5 class="card-title text-center profile-name">{{userInfo.firstName}} {{userInfo.lastName}}</h5>
+            <div class="card-text profile-bio">
+                <h5><strong>First Name: </strong> {{userInfo.firstName}}</h5>
+                <h5><strong>Last Name: </strong>{{userInfo.lastName}}</h5>
+                <h5><strong>Email Address: </strong><a href="#">{{userInfo.email}}</a></h5>
+                <h5><strong>Age: </strong> 21</h5>
+                <h5><strong>Contact-no: </strong> 456-212-555</h5>
+            </div>
+        </div>
 
-<a href="/user/edit/{{userInfo._id}}"> Edit </a> &nbsp;&nbsp;
+       <div class="card-footer">
+        <a href="/user/edit/{{userInfo._id}}">
+        <button type="button" class="btn btn-primary btn-block">Edit</button>
+        </a> &nbsp;&nbsp;
 
+        <form method="POST" action="/user/delete/{{userInfo._id}}?_method=DELETE">
+            <button type="submit" class="btn btn-primary btn-block">Delete </button>
+        </form>
+    </div>
+    </div>
+    </div>
+    </section>
 
-<form method="POST" action="/user/delete/{{userInfo._id}}?_method=DELETE">
-    <button type="submit">Delete </button>
-</form>
+</div>

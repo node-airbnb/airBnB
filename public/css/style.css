@@ -69,6 +69,64 @@ body,html{
     margin: 1em;
   }
 
+  .roomWrapper {
+    margin-top: 1em;
+    margin-bottom: 5em;
+  }
+
+
+  .room-title {
+    color:rgb(77, 6, 6);
+    font-size: 2rem;
+  }
+
+
+  .addressWrap {
+    margin: 1em;
+    padding: 1em;
+    font-size: 1em;
+    background-color: rgb(49, 40, 70);
+    color: white;
+  }
+
+
+  .amenitiesContainer {
+    text-align: left;
+    list-style-type: circle; 
+  }
+  
+  .list-group {
+    margin: 1em;
+    padding: 1em;
+    
+  }
+
+  .profile-wrapper {
+    margin-bottom: 5em;
+  }
+
+  .profile-name {
+    background-color:rgb(77, 6, 6);
+    color: white;
+    font-size: 2rem;
+    margin: 1em;
+  }
+
+  .profile-title {
+    font-size: 2rem;
+    font-weight: 700;
+  } 
+
+  .profile-bio {
+    font-size: 1rem;
+    margin: 1em;
+  }
+
+  .btn {
+    background-color: #1D0033;
+  }
+
+
 footer {
   background-color: #333;
   margin-top: 4em; }
