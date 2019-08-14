@@ -7,6 +7,9 @@ const bcrypt = require('bcryptjs');
 //This creates a model in our application called user. A model is a representation of a collection
 const User = mongoose.model('Users', userSchema);
 
+const hasAccess = require("../middleware/auth");
+
+
 router.get("/login",(req,res)=>
 {
 res.render("user/login");
@@ -237,7 +240,7 @@ else
 
 });
 
-router.get("/profile",(req,res)=>
+router.get("/profile", hasAccess, (req,res)=>
 {
    res.render("user/profile");
 });
@@ -254,7 +257,7 @@ router.get("/edit/:id",(req,res)=>
    })
 });
 
-router.put("/editUser/:id",(req,res)=>
+router.put("/editUser/:id",hasAccess,(req,res)=>
 { 
    User.findOne({_id:req.params.id})
    .then(user=>
@@ -288,22 +291,17 @@ router.put("/editUser/:id",(req,res)=>
 //       })
 // });
 
-router.delete("/delete/:id",(req,res)=>{
+router.delete("/delete/:id",hasAccess, (req,res)=>{
 
       User.remove({_id:req.params.id})
       .then(() => {
          req.session.destroy();
-         res.redirect("/room/viewrooms");
+         res.redirect("/");
       });
 
 })
 
-
-
-
-
-
-router.get("/logout",(req,res)=>
+router.get("/logout", hasAccess, (req,res)=>
 {
 
 //This kills the session
@@ -311,4 +309,7 @@ req.session.destroy();
 res.redirect("/user/login");
 
 })
+
+
+
 module.exports=router;

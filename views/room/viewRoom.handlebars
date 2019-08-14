@@ -35,9 +35,15 @@
             <div class="card-body">
             <h5 class="card-title">{{this.title}}</h5>
             <a class="card-text">Location: {{this.city}}</a>
+            <h5 class="card-title">
+              {{#if this.booked}}
+                No More Available
+              {{/if}}
+            </h5>
+
             </div>
             <div class="card-footer">
-                <a href="/room/viewroomdetails/{{this._id}}">
+                <a href="/room/roomdetails/{{this._id}}">
                     <small class="text-muted">View More..</small>
                 </a>
             </div>

@@ -8,6 +8,7 @@ const hasAccess = require("../middleware/auth");
 //This creates a model in our application called room. A model is a representation of a collection
 const Room = mongoose.model('Rooms', roomSchema);
 
+
 //This displays the rooms form
 // router.get("/viewrooms",(req,res)=>
 // { 
@@ -123,26 +124,44 @@ router.get("/viewrooms",(req,res)=>
    })
 });
 
-router.get("/viewroomdetails/:id",(req,res)=>
+//This navigates the user to the Task DashBoard
+router.get("/bookRoom/:id", hasAccess, (req,res)=>
+{
+   //Anytime you want to pull data from the DB, specifically a collection, you must called the find() method on the variable that re the Model
+   // Room.find({userid:req.session.userInfo._id})
+   Room.findOne({ _id:req.params.id})
+   .then((room)=>
+   {
+      // console.log(searchInput);
+      room.booked = true;
+      
+      room.save()
+         
+      .then(room=>{
+         res.render("room/bookRoom");
+      })
+      // .then(room=>{
+      //    res.render("room/bookRoom",{
+      //       room:room
+      //    })
+
+   })
+});
+
+
+router.get("/roomdetails/:id",(req,res)=>
 {
    Room.findOne({ _id:req.params.id})
-   .then((rm)=>
+   .then((room)=>
    {
       res.render("room/roomDetails",{
-         rm:rm
+         rm:room
       })
    })
 });
 
-//This processes the data after the task form has been submitted
-router.post("/viewSingleRoom",(req,res)=>
-{ 
-
-
-});
-
 //This navigates the user to the Task Edit form with populated data
-router.get("/edit/:id",(req,res)=>
+router.get("/edit/:id", hasAccess, (req,res)=>
 { 
    Room.findOne({ _id:req.params.id})
    .then((room)=>
@@ -153,18 +172,18 @@ router.get("/edit/:id",(req,res)=>
    })
 });
 
-router.put("/edit/:id",(req,res)=>
+router.put("/edit/:id",hasAccess, (req,res)=>
 { 
 
       Room.findOne({_id:req.params.id})
-      .then(task=>
+      .then(room=>
       {
-         task.title=req.body.title;
-         task.address=req.body.address;
-         task.description = req.body.description;
-         task.image=req.body.image;
+         room.title=req.body.title;
+         room.address=req.body.address;
+         room.description = req.body.description;
+         room.image=req.body.image;
 
-         task.save()
+         room.save()
          .then(room=>{
             res.redirect("/room/viewrooms");
          })
@@ -172,7 +191,7 @@ router.put("/edit/:id",(req,res)=>
 });
 
 
-router.delete("/delete/:id",(req,res)=>{
+router.delete("/delete/:id", hasAccess, (req,res)=>{
 
       Room.remove({_id:req.params.id})
       .then(()=>{
@@ -183,4 +202,4 @@ router.delete("/delete/:id",(req,res)=>{
 
 
 
-module.exports=router;
+   module.exports = router;

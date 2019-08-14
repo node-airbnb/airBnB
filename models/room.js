@@ -67,10 +67,16 @@ const roomSchema = new Schema(
         type:String,
         required:true
     },
-    // roomid:
+    booked : 
+    {
+      type:Boolean,
+      required:false
+    },
+        
+    // userid : 
     // {
-    //     type:Object,
-    //     required:true
+    //   type:Object,
+    //   required:true
     // }
 });
 

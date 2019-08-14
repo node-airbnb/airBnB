@@ -1,43 +1,78 @@
-{{#each rm}}
-<div class="container room-details">
-    <img src="{{this.image}}" class="card-img-top" alt="...">
-    <div>{{this.title}}</div>
-    <div>{{this.address}}</div>
-    <div>{{this.price}}</div>
-    <div>{{this.owner}}</div>
-    <div>{{this.amenities1}}</div>
-    <div>{{this.amenities2}}</div>
-    <div>{{this.amenities3}}</div>
-    <div>{{this.amenities4}}</div>
-    <div>{{this.amenities5}}</div>
-    <div>{{this.city}}</div>
+{{!-- {{#each rm}} --}}
+{{!-- <div class="container room-details">
+    <img src="{{rm.image}}" class="card-img-top" alt="...">
+    <div>{{rm.title}}</div>
+    <div>{{rm.address}}</div>
+    <div>{{rm.price}}</div>
+    <div>{{rm.owner}}</div>
+    <div>{{rm.amenities1}}</div>
+    <div>{{rm.amenities2}}</div>
+    <div>{{rm.amenities3}}</div>
+    <div>{{rm.amenities4}}</div>
+    <div>{{rm.amenities5}}</div>
+    <div>{{rm.city}}</div>
 </div>
-<br/>
-{{/each}}
+<br/> --}}
+
+<div class="container room-container">
+    <li class="card-deck">
+    <div class="card">
+        <img src="{{rm.image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">{{rm.title}}</h5>
+        <a class="card-text">Location: {{rm.city}}</a>
+            <div>{{rm.address}}</div>
+    <div>{{rm.price}}</div>
+    <div>{{rm.owner}}</div>
+    <div>{{rm.amenities1}}</div>
+    <div>{{rm.amenities2}}</div>
+    <div>{{rm.amenities3}}</div>
+    <div>{{rm.amenities4}}</div>
+    <div>{{rm.amenities5}}</div>
+    <div>{{rm.city}}</div>
+        </div>
+        <div class="card-footer">
+            {{#if userInfo}}
+            <a href="/room/bookRoom/{{rm._id}}">
+                <small class="text-muted">Book This Room</small>
+            </a>
+            {{else}}
+            <a href="/user/login">
+                <small class="text-muted">Please Login to Book the room.</small>
+            </a>
+            {{/if}}
+
+        </div>
+</div>
+{{!-- {{/each}} --}}
+
+
+
+
 
 {{!-- <div>
-<div class="">Title:  {{this.title}} </div>
-<div class="">address:  {{this.address}} </div>
-<div class="">price:  {{this.price}} </div>
-<div class="">owner:  {{this.owner}} </div>
-<div class="">amenities1:  {{this.amenities1}} </div>
-<div class="">amenities2:  {{this.amenities2}} </div>
-<div class="">amenities3:  {{this.amenities3}} </div>
-<div class="">amenities4:  {{this.amenities4}} </div>
-<div class="">amenities5:  {{this.amenities5}} </div>
-<div class="">Address:  {{this.address}} </div>
-<a class="city">city:  {{this.city}} </a>
-<div class="">Description:  {{this.description}} </div>
-<div class="">Image:  {{this.image}} </div> --}}
-{{!-- <img src={{this.image}}/> --}}
+<div class="">Title:  {{rm.title}} </div>
+<div class="">address:  {{rm.address}} </div>
+<div class="">price:  {{rm.price}} </div>
+<div class="">owner:  {{rm.owner}} </div>
+<div class="">amenities1:  {{rm.amenities1}} </div>
+<div class="">amenities2:  {{rm.amenities2}} </div>
+<div class="">amenities3:  {{rm.amenities3}} </div>
+<div class="">amenities4:  {{rm.amenities4}} </div>
+<div class="">amenities5:  {{rm.amenities5}} </div>
+<div class="">Address:  {{rm.address}} </div>
+<a class="city">city:  {{rm.city}} </a>
+<div class="">Description:  {{rm.description}} </div>
+<div class="">Image:  {{rm.image}} </div> --}}
+{{!-- <img src={{rm.image}}/> --}}
 
 
 {{!-- <br/> --}}
 
-{{!-- <a href="/room/edit/{{this._id}}"> Edit </a> &nbsp;&nbsp;
+{{!-- <a href="/room/edit/{{rm._id}}"> Edit </a> &nbsp;&nbsp;
 
 
-<form method="POST" action="/room/delete/{{this._id}}?_method=DELETE">
+<form method="POST" action="/room/delete/{{rm._id}}?_method=DELETE">
     <button type="submit">Delete </button>
 </form> --}}
 {{!-- <br/>
