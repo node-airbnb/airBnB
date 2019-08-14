@@ -290,9 +290,10 @@ router.put("/editUser/:id",(req,res)=>
 
 router.delete("/delete/:id",(req,res)=>{
 
-      Room.remove({_id:req.params.id})
-      .then(()=>{
-      res.redirect("/room/viewrooms");
+      User.remove({_id:req.params.id})
+      .then(() => {
+         req.session.destroy();
+         res.redirect("/room/viewrooms");
       });
 
 })
