@@ -1,4 +1,13 @@
-{{#if userInfo}}
-{{this}}    
+<div>First Name: {{userInfo.firstName}}</div>
+<div>Last Name: {{userInfo.lastName}}</div>
+<div>Email: {{userInfo.email}}</div>
 
-{{/if}}
+
+<br/><br/>
+
+<a href="/user/edit/{{userInfo._id}}"> Edit </a> &nbsp;&nbsp;
+
+
+<form method="POST" action="/room/delete/{{this._id}}?_method=DELETE">
+    <button type="submit">Delete </button>
+</form>

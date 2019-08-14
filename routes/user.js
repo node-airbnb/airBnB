@@ -242,6 +242,64 @@ router.get("/profile",(req,res)=>
    res.render("user/profile");
 });
 
+//This navigates the user to the Task Edit form with populated data
+router.get("/edit/:id",(req,res)=>
+{ 
+   User.findOne({ _id:req.params.id})
+   .then((user)=>
+   {
+      res.render("user/editUser",{
+         user:user,
+      })
+   })
+});
+
+router.put("/editUser/:id",(req,res)=>
+{ 
+   User.findOne({_id:req.params.id})
+   .then(user=>
+   {
+      user.firstName=req.body.firstName;
+      user.lastName=req.body.lastName;
+      user.email = req.body.email;
+
+      user.save()
+         .then(user => {
+         req.session.userInfo = user;
+         res.redirect("/user/profile");
+      })
+   })
+});
+// router.put("/edit/:id",(req,res)=>
+// { 
+
+//       Room.findOne({_id:req.params.id})
+//       .then(task=>
+//       {
+//          task.title=req.body.title;
+//          task.address=req.body.address;
+//          task.description = req.body.description;
+//          task.image=req.body.image;
+
+//          task.save()
+//          .then(room=>{
+//             res.redirect("/room/viewrooms");
+//          })
+//       })
+// });
+
+router.delete("/delete/:id",(req,res)=>{
+
+      Room.remove({_id:req.params.id})
+      .then(()=>{
+      res.redirect("/room/viewrooms");
+      });
+
+})
+
+
+
+
 
 
 router.get("/logout",(req,res)=>
