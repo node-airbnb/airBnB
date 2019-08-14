@@ -50,6 +50,7 @@ app.use(express.static('public'))
 
 // app.use("/styles/css", express.static(path.join(__dirname, "node_modules/bootstrap/dist/css")));
 
+
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
 app.use((req,res,next)=>
