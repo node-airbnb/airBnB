@@ -46,9 +46,7 @@ app.set('view engine', 'handlebars');
 
 //This code is needed to load all static files (images,css,js)
 app.use(express.static('public'))
-// app.use(express.static(path.join(__dirname, "public"))); // <- this line will us public directory as your static assets
 
-// app.use("/styles/css", express.static(path.join(__dirname, "node_modules/bootstrap/dist/css")));
 
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
