@@ -15,7 +15,7 @@
 <div class="container profile-wrapper">
  <section class="row justify-content-center">
   <div class="col-12 col-sm-10 col-md-8">
-    <div class="card text-black bg-light mb-3">
+    <div class="card text-black bg-light mb-3 shadow-lg p-3 mb-5 bg-white rounded">
       <div class="card-header text-center profile-title">MY PROFILE</div>
         <div class="card-body">
             <div class="text-center">
@@ -33,11 +33,11 @@
 
        <div class="card-footer">
         <a href="/user/edit/{{userInfo._id}}">
-        <button type="button" class="btn btn-primary btn-block">Edit</button>
+        <button type="button" class="btn btn-dark btn-block">Edit</button>
         </a> &nbsp;&nbsp;
 
         <form method="POST" action="/user/delete/{{userInfo._id}}?_method=DELETE">
-            <button type="submit" class="btn btn-primary btn-block">Delete </button>
+            <button type="submit" class="btn btn-dark btn-block">Delete </button>
         </form>
     </div>
     </div>

@@ -16,7 +16,7 @@
 
 <div class="container room-container roomWrapper">
     <li class="card-deck">
-    <div class="card">
+    <div class="card shadow p-3 mb-5 bg-white rounded">
         <img src="{{rm.image}}" class="card-img-top" alt="...">
         <div class="card-body">
           <div class="card-header text-center"> 
@@ -32,7 +32,7 @@
             <li class="list-group-item"><strong>Owner: </strong>{{rm.owner}}</li>
           </ul>
           <div> 
-           <ul class="amenitiesContainer list-group">    
+           <ul class="list-group">    
             <li class="list-group-item" ><strong>Amenities: </strong></li>
             <li class="list-group-item">{{rm.amenities1}}</li>
             <li class="list-group-item">{{rm.amenities2}}</li>
@@ -55,7 +55,7 @@
         <div class="card-footer text-center">
             {{#if userInfo}}
             <a href="/room/bookRoom/{{rm._id}}">
-              <button type="button" class="btn btn-primary">Book room</button>
+              <button type="button" class="btn btn-primary btn-lg">Book room</button>
             </a>
             {{else}}   
 
