@@ -16,12 +16,30 @@ body,html{
   /* background-color: #F20F38; */
   color: white; }
 
+.navbar-brand {
+  font-weight: 500;
+  font-size: 1em;
+}  
+
+.nav-item {
+  font-weight: 500;
+  font-size: 1.25em;
+}  
+
 .form-container {
-  margin: 4em 0;
+  margin: 5em 0;
   padding: 2em;
   color: white; 
   background-color:  rgb(49, 40, 70);
   box-shadow: 0px 0px 10px 0px #000; }
+
+  .loginForm-container {
+    margin-top: 10em;
+    padding: 2em;
+    color: white; 
+    background-color:  rgb(49, 40, 70);
+    box-shadow: 0px 0px 10px 0px #000;
+  }
 
 .align {
   display: block;
@@ -31,7 +49,9 @@ body,html{
  .alignment {
   text-align: center; 
   margin: 1em;
-  color: rgb(65, 4, 14)
+  background-color: rgb(65, 4, 14);
+  color: white;
+
  }
 
   .max-height {
@@ -48,12 +68,18 @@ body,html{
   }
   .banner-title {
     color: rgb(65, 4, 14);
+    font-size: 6rem;
+  }
+
+  .text-capitalize {
     font-size: 4rem;
+    
   }
 
 
 .room-container {
   margin-bottom: 6em; }
+
 
   .title {
     background-color: #1D0033;
@@ -89,11 +115,6 @@ body,html{
     color: white;
   }
 
-
-  .amenitiesContainer {
-    text-align: left;
-    list-style-type: circle; 
-  }
   
   .list-group {
     margin: 1em;
@@ -122,9 +143,6 @@ body,html{
     margin: 1em;
   }
 
-  .btn {
-    background-color: #1D0033;
-  }
 
 
 footer {
