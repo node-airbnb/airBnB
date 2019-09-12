@@ -1,5 +1,4 @@
-﻿# airBnB
-
+# airBnB
 ## creating an AirBnb project using nodeJS..
 
 ## Group Project
