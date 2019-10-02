@@ -95,45 +95,7 @@ bcrypt.genSalt(10, function(err, salt)
       //put document into collection
    new User(userData)
    .save()
-   .then( ()=>
-   {
-   const accountSid = 'AC9e1b0f31f8f9ee244227a6f86ff1368e';
-   const authToken = 'd2c21a84b6cd77cf2f332f8065af9533';
-   const client = require('twilio')(accountSid, authToken);
    
-   client.messages
-      .create({
-         body: `Welcome ${req.body.firstName} You have now been registered with AirBnb`,
-         from: '+16479579767',
-         to: '+16472120075'
-      })
-      .then(message => console.log(message.sid));
-
-      const nodemailer = require('nodemailer');
-      const sgTransport = require('nodemailer-sendgrid-transport');
-      const options = {
-      auth: {
-            api_user: 'KaurWeb',
-            api_key: 'India@2019'
-      }
-   }
-
-   const mailer = nodemailer.createTransport(sgTransport(options));
-
-   const email = {
-   to: `${req.body.email}`, 
-   from: 'Sukhdesigns21@gmail.com',
-   subject: 'Registration is successful',
-   text: 'Registration Done',
-   html: `Hey ${req.body.firstName} You have been successfully registered with AirBnb`
-};
-
-mailer.sendMail(email, function(err, res) {
-   if (err) { 
-         console.log(err) 
-   }
-   console.log(res);
-});
 
 
 res.redirect("/user/login");
